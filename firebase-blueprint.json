@@ -1,0 +1,133 @@
+{
+  "entities": {
+    "Exam": {
+      "title": "Exam",
+      "description": "Standardized Vietnamese High School Graduation Exam entity",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "code": { "type": "string" },
+        "title": { "type": "string" },
+        "subject": { "type": "string" },
+        "durationMinutes": { "type": "number" },
+        "totalQuestions": { "type": "number" },
+        "maxScore": { "type": "number" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "code", "title", "subject", "durationMinutes"]
+    },
+    "Announcement": {
+      "title": "Announcement",
+      "description": "News and announcements from school teachers",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "content": { "type": "string" },
+        "date": { "type": "string" },
+        "author": { "type": "string" }
+      },
+      "required": ["id", "title", "content", "date", "author"]
+    },
+    "ExamFolder": {
+      "title": "ExamFolder",
+      "description": "Categorical folders for exams",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "name"]
+    },
+    "UserAccount": {
+      "title": "UserAccount",
+      "description": "User profile with login credentials",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "username": { "type": "string" },
+        "fullName": { "type": "string" },
+        "role": { "type": "string", "enum": ["student", "teacher", "guest"] },
+        "classGroup": { "type": "string" },
+        "studentId": { "type": "string" },
+        "password": { "type": "string" }
+      },
+      "required": ["id", "username", "fullName", "role"]
+    },
+    "ExamResult": {
+      "title": "ExamResult",
+      "description": "Student exam score submission result",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "examId": { "type": "string" },
+        "studentId": { "type": "string" },
+        "studentName": { "type": "string" },
+        "totalScore": { "type": "number" },
+        "submittedAt": { "type": "string" }
+      },
+      "required": ["id", "examId", "studentId", "totalScore"]
+    },
+    "SchoolClass": {
+      "title": "SchoolClass",
+      "description": "High school class entity for student management and assignments",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "grade": { "type": "number" },
+        "academicYear": { "type": "string" },
+        "homeroomTeacher": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "name", "grade", "academicYear"]
+    },
+    "ExamAssignment": {
+      "title": "ExamAssignment",
+      "description": "Exam assignment assigned to a specific class",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "examId": { "type": "string" },
+        "examTitle": { "type": "string" },
+        "examCode": { "type": "string" },
+        "classGroup": { "type": "string" },
+        "assignedByTeacherName": { "type": "string" },
+        "assignedAt": { "type": "string" },
+        "deadline": { "type": "string" }
+      },
+      "required": ["id", "examId", "examTitle", "classGroup", "assignedAt"]
+    }
+  },
+  "firestore": {
+    "/exams/{examId}": {
+      "schema": "Exam",
+      "description": "Collection of all exams"
+    },
+    "/announcements/{announcementId}": {
+      "schema": "Announcement",
+      "description": "School news and announcements"
+    },
+    "/exam_folders/{folderId}": {
+      "schema": "ExamFolder",
+      "description": "Categorized exam folders"
+    },
+    "/user_accounts/{accountId}": {
+      "schema": "UserAccount",
+      "description": "Registered students and teachers accounts"
+    },
+    "/exam_results/{resultId}": {
+      "schema": "ExamResult",
+      "description": "Student exam submissions"
+    },
+    "/school_classes/{classId}": {
+      "schema": "SchoolClass",
+      "description": "School classes for student management and exam assignment"
+    },
+    "/exam_assignments/{assignmentId}": {
+      "schema": "ExamAssignment",
+      "description": "Exam assignments assigned to specific classes"
+    }
+  }
+}

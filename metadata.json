@@ -1,0 +1,6 @@
+{
+  "name": "Hệ Thống Ôn Thi Trắc Nghiệm TNTHPT Huế",
+  "description": "Hệ thống hỗ trợ ôn thi tốt nghiệp THPT trực tuyến - Trắc nghiệm Toán online chuẩn cấu trúc mới",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

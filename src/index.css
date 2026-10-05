@@ -1,0 +1,55 @@
+@import "tailwindcss";
+@import "katex/dist/katex.min.css";
+
+@theme {
+  --font-sans: "Be Vietnam Pro", ui-sans-serif, system-ui, sans-serif;
+  --color-ink: #14213d;
+  --color-ink-2: #4a5568;
+  --color-paper: #f6f7f9;
+  --color-line: #e3e6ec;
+  --color-brand: #0b6e69;
+  --color-brand-soft: #e3f2f0;
+  --color-choice: #3d5a9e;
+  --color-short: #b7791f;
+  --color-stamp: #c8372d;
+}
+@layer base {
+  :focus-visible { outline: 2px solid var(--color-brand); outline-offset: 2px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+
+/* KaTeX refinement for Vietnamese typography and exam papers */
+.katex {
+  font-size: 1.05em;
+  text-rendering: auto;
+}
+
+/* Utility to hide scrollbars while allowing scroll */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Ensure vector arrows and accents render with crisp precision */
+.katex .mord .accent {
+  vertical-align: baseline;
+}
+
+/* Ensure inline math doesn't distort line height unnaturally */
+.inline-math-container .katex-display {
+  margin: 0.5em 0;
+}
+
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 4px 0;
+}
+
+/* Smooth scratchpad canvas */
+.scratchpad-canvas {
+  touch-action: none;
+}
